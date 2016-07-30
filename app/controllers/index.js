@@ -19,19 +19,21 @@ var mBluetoothLEListener = new BluetoothListener({
         console.log("scan mode");
     },
     onBluetoothServiceStateChanged: function(state) {
-        console.log("blue");
+        console.log("blue state changed: " + state);
     },
     onActionDeviceFound: function(device) {
-        console.log("device " + device.getName() + " " + device.getAddress());
+        console.log("device found: " + device.getName() + " " + device.getAddress());
+        btc.cancelScan();
+        btc.connect(device.getAddress());
     },
-    onReadData: function(device, data) {
-        console.log("data");
+    onReadData: function( data) {
+        console.log("data read: " + data );
     },
     onWriteData: function(characteristic) {
-        console.log("data");
+        console.log("data write: " + characteristic);
     },
     onDataChanged: function(characteristic) {
-        console.log("data");
+        console.log("data changed: " + characteristic);
     }
 });
 
@@ -39,7 +41,18 @@ var btc = mBTController.build(activity);
 btc.setBluetoothListener(mBluetoothLEListener);
 
 function onClickScan(e) {
-    btc.startScan();
+    if (btc.isAvailable()) {
+        if (btc.isEnabled()) {
+            //btc.cancelScan();
+            btc.startScan();
+        } else {
+            alert("Not enabled");
+            btc.openBluetooth();
+        }
+    } else {
+        alert("Not available");
+    }
+
 }
 
 $.btn_scan.addEventListener("click", onClickScan);
