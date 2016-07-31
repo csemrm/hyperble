@@ -1,5 +1,6 @@
 <Alloy>
 	<Window class="container">
+		<ScrollView id="view_scroller" class="vertical"/>
 		<Button id="btn_scan" title="Scan"/>
 	</Window>
 </Alloy>

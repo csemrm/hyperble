@@ -1,15 +1,22 @@
-".container": {
-	backgroundColor:"white"
+".container" : {
+	backgroundColor: "white"
 }
-
-"Label": {
+"Label" : {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#000"
+	color: "#000",
+	left:0
+}
+"#btn_scan" : {
+	bottom: 10
+}
+"#view_scroller" : {
+	top: 0,
+	bottom: 60,
+	left: 0,
+	right: 0
 }
 
-"#label": {
-	font: {
-		fontSize: 12
-	}
+".vertical": {
+	layout:"vertical"
 }
