@@ -12,7 +12,14 @@
 }
 "#view_scroller" : {
 	top: 0,
-	bottom: 60,
+	height:"50%",
+	left: 0,
+	right: 0
+}
+
+"#view_scroller_char" : {
+	top: "50%",
+	bottom:60,
 	left: 0,
 	right: 0
 }
